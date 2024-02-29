@@ -24,7 +24,6 @@ jobs:
         DIR="${PWD}/.cabal/bin"
         mkdir -p "${DIR}"
         echo "${DIR}" >> "${GITHUB_PATH}"
-        cabal user-config init
         cabal user-config update --augment="installdir: ${DIR}"
         cabal user-config update --augment="install-method: copy"
         cabal user-config update --augment="overwrite-policy: always"
