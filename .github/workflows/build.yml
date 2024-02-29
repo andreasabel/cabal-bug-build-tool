@@ -8,9 +8,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cabal: ['3.10','3.8']
     steps:
 
     - uses: actions/checkout@v4
+
+    - uses: haskell-actions/setup@v2
+      with:
+        cabal-version: ${{ matrix.cabal }}
 
     - name: Haskell versions
       run: |
