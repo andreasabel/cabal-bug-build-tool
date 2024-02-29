@@ -17,11 +17,15 @@ jobs:
         which cabal
         cabal --version
         ghc --version
+        alex --version || true
 
     - name: Set installdir
       run: |
+        DIR=/home/runner/.cabal/bin
+        mkdir -p "${DIR}"
+        echo "${DIR}" >> "${GITHUB_PATH}"
         cabal user-config init
-        cabal user-config update --augment="installdir: /home/runner/.local/bin"
+        cabal user-config update --augment="installdir: ${DIR}"
         cabal user-config update --augment="install-method: copy"
         cabal user-config update --augment="overwrite-policy: always"
 
