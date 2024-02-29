@@ -1,0 +1,22 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.36.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           cabal-bug-build-tool
+version:        0.0.0
+build-type:     Simple
+
+library
+  exposed-modules:
+      Foo.Lex
+  other-modules:
+      Paths_cabal_bug_build_tool
+  hs-source-dirs:
+      ./
+  build-tools:
+      alex >=3.5.1.0
+  build-depends:
+      base
+  default-language: Haskell2010
