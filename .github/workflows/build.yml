@@ -12,12 +12,32 @@ jobs:
 
     - uses: actions/checkout@v4
 
-    - run: cabal --version
+    - run: |
+        cabal --version
+        which cabal
+
+    - name: Set installdir
+      run: |
+        DIR=/home/runner/.local/bin
+        mkdir -p "${DIR}"
+        cabal user-config update --augment="installdir: ${DIR}"
+        echo "${DIR}" >> "${GITHUB_PATH}"
+
+    - run: echo "$PATH"
+
+    - name: Print config file
+      run: |
+        CFG=$(cabal --help | tail -1)
+        echo "${CFG}"
+        cat "${CFG}"
+        echo "CFG=${CFG}" >> "${GITHUB_ENV}"
 
     - run: cabal update
 
     - run: cabal install --ignore-project alex-3.4.0.1
 
-    - run: alex --version
+    - run: |
+        alex --version
+        which alex
 
     - run: cabal build
