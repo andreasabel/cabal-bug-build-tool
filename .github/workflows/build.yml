@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
 
     - uses: actions/checkout@v4
@@ -47,3 +47,5 @@ jobs:
         which alex
 
     - run: cabal -v3 build
+
+    - run: cabal exec -- alex --version
