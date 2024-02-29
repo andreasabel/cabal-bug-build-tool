@@ -12,7 +12,9 @@ jobs:
 
     - uses: actions/checkout@v4
 
-    - run: cabal install --ignore-project alex-3.4.0.1
+    - run: |
+        cabal update
+        cabal install --ignore-project alex-3.4.0.1
 
     - run: alex --version
 
