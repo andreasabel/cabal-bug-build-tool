@@ -46,4 +46,4 @@ jobs:
         alex --version
         which alex
 
-    - run: cabal build
+    - run: cabal -v3 build
