@@ -21,7 +21,7 @@ jobs:
 
     - name: Set installdir
       run: |
-        DIR=/home/runner/.cabal/bin
+        DIR="${PWD}/.cabal/bin"
         mkdir -p "${DIR}"
         echo "${DIR}" >> "${GITHUB_PATH}"
         cabal user-config init
