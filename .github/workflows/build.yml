@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
 
     - uses: actions/checkout@v4
@@ -21,12 +21,13 @@ jobs:
 
     - name: Set installdir
       run: |
-        DIR="${PWD}/.cabal/bin"
+        DIR="~/.cabal/bin"
         mkdir -p "${DIR}"
         echo "${DIR}" >> "${GITHUB_PATH}"
+        cabal user-config update --augment="extra-prog-path: ${DIR}"
         cabal user-config update --augment="installdir: ${DIR}"
-        cabal user-config update --augment="install-method: copy"
-        cabal user-config update --augment="overwrite-policy: always"
+      # cabal user-config update --augment="install-method: copy"
+      # cabal user-config update --augment="overwrite-policy: always"
 
     - run: echo "$PATH"
 
