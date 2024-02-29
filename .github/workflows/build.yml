@@ -28,8 +28,8 @@ jobs:
     - name: Print config file
       run: |
         CFG=$(cabal --help | tail -1)
-        echo "${CFG}"
-        cat "${CFG}"
+        echo ${CFG}
+        cat ${CFG}
         echo "CFG=${CFG}" >> "${GITHUB_ENV}"
 
     - run: cabal update
