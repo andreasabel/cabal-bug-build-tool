@@ -18,5 +18,5 @@ library
   build-tools:
       alex >=3.5.1.0
   build-depends:
-      base
+      base, array
   default-language: Haskell2010
